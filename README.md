@@ -1,1 +1,1 @@
-# Desafio-t-cnico-QA---Avenue
+# Desafio tecnico QA - Avenue

@@ -1,0 +1,20 @@
+Suite 1 - Carrinho de compras
+
+    Cenário 1:
+    - Acesse https://www.amazon.com.br/.
+    - Pesquise um produto de sua preferência.
+    - Adicione o produto no carrinho.
+    - Valide se o produto foi incluído no carrinho com sucesso.
+    
+    Cenário 2:
+    Acesse https://www.amazon.com.br/
+    - Adicione o 3 produto no carrinho.
+    - Valide se o valor total do carrinho está correto.
+
+Suite 2 - Cadastro
+
+    Cenário 1:
+    - Acesse https://www.amazon.com.br/
+    - Acesse a página para criar uma nova conta.
+    - Preencha os campos.
+    - Não é precisa clicar em continuar.

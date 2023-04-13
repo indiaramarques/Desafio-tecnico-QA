@@ -1,33 +1,71 @@
-describe ('Suite 1 - Carrinho de compras', () => {
-    it('Cenário 1 - Adicionar 1 produto ao carrinho', () => {
-        cy.visit('https://www.amazon.com.br/')
-        cy.get('input[id=twotabsearchtextbox]').type('hogwarts legacy PS5')
-        cy.get('input[id=nav-search-submit-button]').click()
-        cy.get('[data-asin] > .sg-col-inner > .s-widget-container > .s-card-container > .a-spacing-base > .a-spacing-small > .s-title-instructions-style > .a-size-mini > .a-link-normal > .a-size-base-plus')
-        .first().click()
-        cy.get('input[id=add-to-cart-button]').click()
-        cy.contains('Adicionado ao carrinho')
+describe('Suite 1 - Carrinho de compras', () => {
+    beforeEach(() => {
+        cy.visit("https://www.amazon.com.br/");
 
-    })
+        it('Cenário 1 - Adicionar 1 produto ao carrinho', () => {
+            cy.get('input[id=twotabsearchtextbox]').type('hogwarts legacy PS5')
+            cy.get('input[id=nav-search-submit-button]').click()
+            cy.get('[data-asin] > .sg-col-inner > .s-widget-container > .s-card-container > .a-spacing-base > .a-spacing-small > .s-title-instructions-style > .a-size-mini > .a-link-normal > .a-size-base-plus')
+                .first().click()
+            cy.get('input[id=add-to-cart-button]').click()
+            cy.contains('Adicionado ao carrinho')
 
-    it('Cenário 2 - Adicionar 3 produtos ao carrinho', () => {
-        cy.visit('https://www.amazon.com.br/')
-        cy.get('input[id=twotabsearchtextbox]').type('Jogos PS4')
-        cy.get('input[id=nav-search-submit-button]').click()
-        cy.get('[data-asin] > .sg-col-inner > .s-widget-container > .s-card-container > .a-spacing-base > .a-spacing-small > .s-title-instructions-style > .a-size-mini > .a-link-normal > .a-size-base-plus')
-        .first().click()
-        cy.get('input[id=add-to-cart-button]').click()
-        cy.get('input[id=twotabsearchtextbox]').type('PS4 Console')
-        cy.get('input[id=nav-search-submit-button]').click()
-        cy.get('[data-asin] > .sg-col-inner > .s-widget-container > .s-card-container > .a-spacing-base > .a-spacing-small > .s-title-instructions-style > .a-size-mini > .a-link-normal > .a-size-base-plus')
-        .first().click()
-        cy.get('input[id=add-to-cart-button]').click()
-        cy.get('input[id=twotabsearchtextbox]').type('Controle PS4')
-        cy.get('input[id=nav-search-submit-button]').click()
-        cy.get('[data-asin] > .sg-col-inner > .s-widget-container > .s-card-container > .a-spacing-base > .a-spacing-small > .s-title-instructions-style > .a-size-mini > .a-link-normal > .a-size-base-plus')
-        .first().click()
-        cy.get('input[id=add-to-cart-button]').click()
-        //criar validação de valor
-    })
+        })
 
+        it("Cenário 2 - Adicionar 3 produtos ao carrinho", () => {
+
+            let produto1 = "";
+            let produto2 = "";
+            let produto3 = "";
+            let total = "";
+
+            const parsePrice = (valor) => {
+                const valorString = valor
+                    .replace("R$", "")
+                    .replace(".", "")
+                    .replace(",", ".")
+                    .trim();
+                return parseFloat(valorString);
+            };
+            //Primeiro Produto
+            cy.get("input[id=twotabsearchtextbox]").type("Jogos PS4");
+            cy.get("input[id=nav-search-submit-button]").click();
+            cy.get("[data-asin] > .sg-col-inner > .s-widget-container > .s-card-container > .a-spacing-base > .a-spacing-small > .s-title-instructions-style > .a-size-mini > .a-link-normal > .a-size-base-plus")
+                .first().click();
+
+            cy.get("#corePrice_feature_div > .a-section").then(($span) => {
+                const textValue = $span.text();
+                produto1 = parsePrice(textValue);
+                cy.get("input[id=add-to-cart-button]").click();
+                //Segundo Produto
+                cy.get("input[id=twotabsearchtextbox]").type("PS4 Console");
+                cy.get("input[id=nav-search-submit-button]").click();
+                cy.get("[data-asin] > .sg-col-inner > .s-widget-container > .s-card-container > .a-spacing-base > .a-spacing-small > .s-title-instructions-style > .a-size-mini > .a-link-normal > .a-size-base-plus")
+                    .first().click();
+                cy.get("#corePrice_feature_div > .a-section").then(($span) => {
+                    const textValue = $span.text();
+                    produto2 = parsePrice(textValue);
+                    cy.get("input[id=add-to-cart-button]").click();
+                    //Terceiro Produto
+                    cy.get("input[id=twotabsearchtextbox]").type("Controle PS4");
+                    cy.get("input[id=nav-search-submit-button]").click();
+                    cy.get("[data-asin] > .sg-col-inner > .s-widget-container > .s-card-container > .a-spacing-base > .a-spacing-small > .s-title-instructions-style > .a-size-mini > .a-link-normal > .a-size-base-plus")
+                        .first().click();
+                    cy.get("#corePrice_feature_div > .a-section").then(($span) => {
+                        const textValue = $span.text();
+                        produto3 = parsePrice(textValue);
+                        cy.get("input[id=add-to-cart-button]").click();
+                        //Validar a soma dos 3 produtos
+                        cy.get('#sw-subtotal > :nth-child(2) > .a-price > [aria-hidden="true"]').then(($total) => {
+                            const textValue = $total.text();
+                            total = parsePrice(textValue);
+                            const result = produto1 + produto2 + produto3;
+                            cy.log(produto1, produto2, produto3);
+                            expect(total).to.equal(result);
+                        });
+                    });
+                });
+            });
+        });
+    });
 })

@@ -3,7 +3,7 @@ describe ('Suite 2 - Cadastro', () => {
         cy.visit('https://www.amazon.com.br/')
         cy.contains('Contas e Listas').click()
         cy.get('a[id="createAccountSubmit"]').click()
-        //Validar que entrou na página (dps)
+        cy.contains('Criar conta')
         cy.get('input[id=ap_customer_name]').type('Indiara Caetano Marques')
         cy.get('input[id=ap_email]').type('indiara@email.com')
         cy.get('input[id=ap_password]').type('Senha1234')

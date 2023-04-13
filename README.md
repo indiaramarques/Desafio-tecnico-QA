@@ -1,4 +1,4 @@
-# Desafio tecnico QA - Avenue
+# Desafio tecnico QA 
 
 Para executar o teste, basta seguir as instruções abaixo:
 

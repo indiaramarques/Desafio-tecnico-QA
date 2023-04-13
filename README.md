@@ -12,7 +12,7 @@ Para executar o teste, basta seguir as instruções abaixo:
   * Execute o seguinte comando: "npm install".
     
 4 - Instalação do Cypress:
-  * Com o projeto aberto no editor de código de sua preferência, abra o terminal;
+  * Com o projeto aberto no editor de código de sua preferência, abra o terminal e confira se está na pasta do projeto;
   * Execute o comando: npm install cypress.
 
 5 - Executando o teste:

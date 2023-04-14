@@ -17,4 +17,4 @@ Suite 2 - Cadastro
     - Acesse https://www.amazon.com.br/
     - Acesse a página para criar uma nova conta.
     - Preencha os campos.
-    - Não é precisa clicar em continuar.
+    - Não precisa clicar em continuar.

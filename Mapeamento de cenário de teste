@@ -1,5 +1,24 @@
 Cenário 1:
 
+- Acesse o site https://avenue.us/;
+- Acesse a página de login (Acessar a conta);
+- Preencha e-mail e senha (válidos);
+- Efetue login com sucesso.
+
 Cenário 2:
 
-Cenárip 3:
+- Acesse o site https://avenue.us/;
+- Acesse a página de cadastro (Abra a sua conta);
+- Preencha os formulários e avance as etapas: Dados pessoais, dados de contato, informações financeiras, documentação;
+- Submeta os dados para a analise.
+
+Cenário 3:
+
+- Acesse o site https://avenue.us/;
+- Siga até o final da página;
+- Clique em "Baixar na App Store" ou "Baixar no Google Play";
+- Valide que foi redirecionado para a loja escolhida.
+
+A importância do primeiro cenário permitir o usuário acessar a sua conta e garantir que tenha os serviços oferecidos com facilidade;
+O segundo cenário gera lead para empresa;
+O terceiro cenário permite o cliente baixar o app no seu smartphone.

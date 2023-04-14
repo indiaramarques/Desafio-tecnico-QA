@@ -1,6 +1,7 @@
 describe('Suite 1 - Carrinho de compras', () => {
     beforeEach(() => {
         cy.visit("https://www.amazon.com.br/");
+    })
 
         it('Cenário 1 - Adicionar 1 produto ao carrinho', () => {
             cy.get('input[id=twotabsearchtextbox]').type('hogwarts legacy PS5')
@@ -68,4 +69,3 @@ describe('Suite 1 - Carrinho de compras', () => {
             });
         });
     });
-})
